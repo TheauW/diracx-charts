@@ -150,10 +150,25 @@ spec:
             httpGet:
               path: /
               port: http
+            timeoutSeconds: 15
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
               port: http
+            timeoutSeconds: 15
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
 
           {{- if $nodeDevInstall }}
           # Start the node module in development mode
